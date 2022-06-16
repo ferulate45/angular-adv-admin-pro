@@ -8,7 +8,7 @@ import { UsuarioService } from '../services/usuario.service';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private usuarioService: UsuarioService){ }
+  constructor(private usuarioService: UsuarioService, private router:Router){ }
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
       .pipe(
         tap(isAutheticated =>{
           if(!isAutheticated){
-            //this.router.navigateByUrl('/login');
+            this.router.navigateByUrl('/auth/login');
           }
         })
       );
