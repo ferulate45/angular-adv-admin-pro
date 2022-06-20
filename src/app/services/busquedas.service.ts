@@ -4,6 +4,7 @@ import { map } from 'rxjs';
 
 
 import { environment } from 'src/environments/environment';
+import { Hospital } from '../models/hospital.model';
 import { Usuario } from '../models/usuario.model';
 
 const base_url = environment.base_url;
@@ -30,6 +31,10 @@ export class BusquedasService {
     return result.map(u => new Usuario(u.nombre, u.email, '', u.img, u.google, u.role, u.uid));
   }
 
+  private convertToHospitales(result : any[]): Hospital[]{
+    return result;
+  }
+
   buscar(tipo: 'usuarios' | 'medicos' | 'hospitales',
           valor: string){
     const url = `${base_url}/search/in/${tipo}/${valor}`;
@@ -38,7 +43,10 @@ export class BusquedasService {
                 map((resp:any) => {
                   switch (tipo) {
                     case 'usuarios':
-                      return this.convertToUsuarios(resp.result);                  
+                      return this.convertToUsuarios(resp.result);    
+                    case 'hospitales':
+                      console.log(resp.result);
+                        return this.convertToHospitales(resp.result);                  
                     default:
                       return [];
                   }

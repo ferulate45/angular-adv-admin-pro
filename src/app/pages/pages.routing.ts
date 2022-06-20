@@ -11,6 +11,8 @@ import { AccountSettingsComponent } from "./account-settings/account-settings.co
 import { PromesasComponent } from "./promesas/promesas.component";
 import { PerfilComponent } from "./perfil/perfil.component";
 import { UsuariosComponent } from "./mantenimientos/usuarios/usuarios.component";
+import { HospitalesComponent } from "./mantenimientos/hospitales/hospitales.component";
+import { MedicosComponent } from "./mantenimientos/medicos/medicos.component";
 
 
 
@@ -29,7 +31,11 @@ const routes : Routes = [
             { path: 'perfil', component: PerfilComponent, data:{titulo: 'Perfil de Usuario'} },
 
             //Mantenimientos
-            { path: 'usuarios', component: UsuariosComponent, data:{titulo: 'Usuarios'} }
+            { path: 'usuarios', component: UsuariosComponent, data:{titulo: 'Mantenimiento de Usuarios'} },
+            { path: 'hospitales', component: HospitalesComponent, data:{titulo: 'Mantenimiento de Hospitales'} },
+            { path: 'medicos', component: MedicosComponent, data:{titulo: 'Mantenimiento de Medicos'} },
+
+
         ]
     }
 ]; 
