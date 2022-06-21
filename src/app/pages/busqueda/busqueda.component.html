@@ -1,0 +1,99 @@
+<div class="row animated fadeIn fast">
+    <div class="col-4">
+      <div class="card">
+        <div class="card-body">
+
+            <h3>Usuarios</h3>
+
+            <div *ngIf="usuarios.length === 0" class="alert alert-info animated fadeIn fast">
+                <p class="mb-0">
+                    No se han encontrado usuarios que coincidan con el valor de busqueda
+                </p>
+            </div>
+
+            <table *ngIf="usuarios.length > 0" class=" animated fadeIn fast">
+                <thead>
+                    <tr>
+                        <th class="w100">Avatar</th>
+                        <th>Nombre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let i of usuarios">
+                        <td>
+                          <img [src]="i.img || '' | imagen: 'usuarios'" class="avatar">
+                        </td>
+                        <td>{{i.nombre}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+          <div class="card-body">
+  
+              <h3>Medicos</h3>
+  
+              <div *ngIf="medicos.length === 0" class="alert alert-info animated fadeIn fast">
+                  <p class="mb-0">
+                      No se han encontrado medicos que coincidan con el valor de busqueda
+                  </p>
+              </div>
+  
+              <table *ngIf="medicos.length > 0" class=" animated fadeIn fast">
+                  <thead>
+                      <tr>
+                          <th class="w100">Avatar</th>
+                          <th>Nombre</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let i of medicos">
+                          <td>
+                            <img [src]="i.img || '' | imagen: 'medicos'" class="avatar">
+                          </td>
+                          <td>
+                            <a [routerLink]="['/dashboard/medico/', i._id]" class="cursor-pointer">
+                                {{i.nombre}}
+                            </a>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card">
+          <div class="card-body">
+  
+              <h3>Hospitales</h3>
+  
+              <div *ngIf="hospitales.length === 0" class="alert alert-info animated fadeIn fast">
+                  <p class="mb-0">
+                      No se han encontrado hospitales que coincidan con el valor de busqueda
+                  </p>
+              </div>
+  
+              <table *ngIf="hospitales.length > 0" class="table animated fadeIn fast">
+                  <thead>
+                      <tr>
+                          <th class="w100">Avatar</th>
+                          <th>Nombre</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let i of hospitales">
+                        <td>
+                          <img [src]="i.img || '' | imagen: 'hospitales'" class="avatar">
+                        </td>
+                        <td>{{i.nombre}}</td>
+                    </tr>
+                  </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+</div>
