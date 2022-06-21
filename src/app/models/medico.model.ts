@@ -1,15 +1,18 @@
-interface _HospitalUser{
+import { Hospital } from "./hospital.model";
+
+interface _MedicoUser{
     uid: string;
     nombre: string;
     img?: string;
 }
 
-export class Hospital {
+export class Medico {
 
     constructor(
         public nombre: string,
         public _id: string,
         public img?: string,
-        public usuario?: _HospitalUser
+        public usuario?: _MedicoUser,
+        public hospital?: Hospital
     ){}
 }

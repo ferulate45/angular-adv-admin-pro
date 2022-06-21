@@ -23,6 +23,14 @@
     width: 140px;
 }
 
+.medico-img{
+    width: 200px;
+}
+
+.hospital-img{
+    width: 407px;
+}
+
 .avatar{
     border-radius: 100%;
     border: 1px solid gray;

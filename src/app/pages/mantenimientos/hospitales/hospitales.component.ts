@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { delay, Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
 
@@ -11,7 +11,7 @@ import { BusquedasService } from 'src/app/services/busquedas.service';
   selector: 'app-hospitales',
   templateUrl: './hospitales.component.html'
 })
-export class HospitalesComponent implements OnInit {
+export class HospitalesComponent implements OnInit, OnDestroy {
 
   imgSubs:Subscription | undefined;
   loading:boolean = true;
@@ -21,6 +21,10 @@ export class HospitalesComponent implements OnInit {
   constructor(private hospitalService: HospitalService,
               private busquedasService: BusquedasService,
               private modalImagenService: ModalImagenService) { }
+  
+  ngOnDestroy(): void {
+    this.imgSubs?.unsubscribe();
+  }
 
   ngOnInit(): void {
     this.cargarHospitales();
@@ -40,14 +44,14 @@ export class HospitalesComponent implements OnInit {
   }
 
   guardarCambios(hospital:Hospital){
-    this.hospitalService.actualizarHospital(hospital.uid, hospital.nombre)
+    this.hospitalService.actualizarHospital(hospital._id, hospital.nombre)
       .subscribe(resp => {
         Swal.fire('Actualizado', hospital.nombre ,'success');
       });
   }
 
   eliminarHospital(hospital:Hospital){
-    this.hospitalService.borrarHospital(hospital.uid)
+    this.hospitalService.borrarHospital(hospital._id)
       .subscribe(resp => {
         this.cargarHospitales();
         Swal.fire('Borrado', hospital.nombre ,'success');
@@ -74,7 +78,7 @@ export class HospitalesComponent implements OnInit {
   }
 
   openChangeImageModal(hospital:Hospital){
-    this.modalImagenService.openModal('hospitales', hospital.uid, hospital.img);
+    this.modalImagenService.openModal('hospitales', hospital._id, hospital.img);
   }
 
   buscar(valor: string){

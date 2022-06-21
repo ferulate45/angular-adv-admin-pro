@@ -20,6 +20,7 @@ import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component'
 import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.component';
 import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
 import { PipeModule } from '../pipes/pipe.module';
+import { MedicoComponent } from './mantenimientos/medicos/medico/medico.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { PipeModule } from '../pipes/pipe.module';
     PerfilComponent,
     UsuariosComponent,
     HospitalesComponent,
-    MedicosComponent
+    MedicosComponent,
+    MedicoComponent
   ],
   exports: [
     DashboardComponent,

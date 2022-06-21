@@ -1,6 +1,6 @@
 import { Usuario } from "../models/usuario.model";
 
-export interface CargarUsuario{
+export interface CargarUsuarios{
     total:number;
     usuarios:Usuario[];
 }

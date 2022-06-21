@@ -1,6 +1,6 @@
 import { Hospital } from "../models/hospital.model";
 
-export interface CargarHospital{
+export interface CargarHospitales{
     ok:boolean;
     hospitales:Hospital[];
 }

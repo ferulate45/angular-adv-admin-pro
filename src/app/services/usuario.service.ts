@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import {catchError, map, Observable, of, tap} from 'rxjs';
 
 import { environment } from 'src/environments/environment';
-import { CargarUsuario } from '../interfaces/cargar-usuarios.interface';
+import { CargarUsuarios } from '../interfaces/cargar-usuarios.interface';
 import { LoginForm } from '../interfaces/login-form.interface';
 import { ProfileForm } from '../interfaces/profile-form.interface';
 import { RegisterForm } from '../interfaces/register-form.interface';
@@ -122,7 +122,7 @@ export class UsuarioService {
 
   cargarUsuarios(skip: number = 0){    
     const url = `${base_url}/usuarios?skip=${skip}`;
-    return this.http.get<CargarUsuario>(url, this.headers)
+    return this.http.get<CargarUsuarios>(url, this.headers)
             .pipe(map(resp =>{
               const usuarios = resp.usuarios.map(u => new Usuario(u.nombre, u.email, '', u.img, u.google, u.role, u.uid));
               return {

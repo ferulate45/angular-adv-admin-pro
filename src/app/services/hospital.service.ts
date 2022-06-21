@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CargarHospital } from '../interfaces/cargar-hospitales.interface';
+import { CargarHospitales } from '../interfaces/cargar-hospitales.interface';
 import { Hospital } from '../models/hospital.model';
 
 const base_url = environment.base_url;
@@ -28,7 +28,7 @@ export class HospitalService {
 
   cargarHospitales(skip: number = 0){    
     const url = `${base_url}/hospitales`;
-    return this.http.get<CargarHospital>(url, this.headers)
+    return this.http.get<CargarHospitales>(url, this.headers)
       .pipe(
         map(resp => resp )
       );
@@ -36,17 +36,17 @@ export class HospitalService {
 
   crearHospital(nombre: string){    
     const url = `${base_url}/hospitales`;
-    return this.http.post<CargarHospital>(url, {nombre}, this.headers);
+    return this.http.post(url, {nombre}, this.headers);
   }
 
   actualizarHospital(id:string, nombre: string){    
     const url = `${base_url}/hospitales/${id}`;
-    return this.http.put<CargarHospital>(url, {nombre}, this.headers);
+    return this.http.put(url, {nombre}, this.headers);
   }
 
   borrarHospital(id:string){    
     const url = `${base_url}/hospitales/${id}`;
-    return this.http.delete<CargarHospital>(url, this.headers);
+    return this.http.delete(url, this.headers);
   }
   
 }
